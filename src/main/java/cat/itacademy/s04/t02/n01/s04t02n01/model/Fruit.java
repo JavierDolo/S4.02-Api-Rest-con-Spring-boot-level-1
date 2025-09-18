@@ -8,22 +8,23 @@ public class Fruit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String name;
-    private int cantidadKilos;
+    private int quantityKilos;
 
     // Constructors
     public Fruit() {}
-    public Fruit(String name, int cantidadKilos) {
+
+    public Fruit(String name, int quantityKilos) {
         this.name = name;
-        this.cantidadKilos = cantidadKilos;
+        this.quantityKilos = quantityKilos;
     }
 
     // Getters and Setters
     public int getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -34,10 +35,10 @@ public class Fruit {
         this.name = name;
     }
 
-    public int getCantidadKilos() {
-        return cantidadKilos;
+    public int getQuantityKilos() {
+        return quantityKilos;
     }
-    public void setCantidadKilos(int cantidadKilos) {
-        this.cantidadKilos = cantidadKilos;
+    public void setQuantityKilos(int quantityKilos) {
+        this.quantityKilos = quantityKilos;
     }
 }
