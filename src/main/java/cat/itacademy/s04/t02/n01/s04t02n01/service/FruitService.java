@@ -21,7 +21,9 @@ public class FruitService {
 
     @Transactional(readOnly = true)
     public List<FruitResponse> getAll() {
-        return repository.findAll().stream().map(this::toResponse).toList();
+        return repository.findAll().stream()
+                .map(this::toResponse)
+                .toList();
     }
 
     @Transactional(readOnly = true)
@@ -32,15 +34,17 @@ public class FruitService {
     }
 
     public FruitResponse create(FruitRequest request) {
-        Fruit fruit = new Fruit(null, request.name(), request.quantityKilos());
+        Fruit fruit = new Fruit(request.name(), request.quantityKilos());
         return toResponse(repository.save(fruit));
     }
 
     public FruitResponse update(Long id, FruitRequest request) {
         Fruit fruit = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Fruit not found with id: " + id));
+
         fruit.setName(request.name());
         fruit.setQuantityKilos(request.quantityKilos());
+
         return toResponse(repository.save(fruit));
     }
 
